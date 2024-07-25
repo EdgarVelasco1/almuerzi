@@ -1,21 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+const dotenv = require('dotenv')
 
-// const dotenv = require('dotenv')
+dotenv.config()
 
-// dotenv.config()
-
-mongoose.connect(process.env.MONGODB_URI,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+mongoose.connect(process.env.MONGODB_URI)
 
 //creamos un nuevo modelo
 
 const Users = mongoose.model('User', new mongoose.Schema({ nombre: String}))
 
-Users.create({nombre: 'Chanchito Feliz'})
+Users.create({nombre: 'Chanchito Triste'})
 
 app.get(('*'),(request, response) => {
 

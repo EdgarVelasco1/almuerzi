@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
+//const cors = require('cors')
 const bodyParser = require('body-parser')
 const meals = require('./routes/meals')
 const orders = require('./routes/orders')
@@ -8,7 +8,7 @@ const app = express()
 const dotenv = require('dotenv')
 
 app.use(bodyParser.json())
-app.use(cors())
+//app.use(cors())
 
 dotenv.config()
 

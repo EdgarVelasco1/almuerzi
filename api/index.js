@@ -1,28 +1,24 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const meals = require('./routes/meals')
+const orders = require('./routes/orders')
 const app = express()
 const dotenv = require('dotenv')
 
+app.use(bodyParser.json())
+app.use(cors())
+
 dotenv.config()
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI) //este es el unico recurso para conectar vercel, vercel cli y mongodb no hay necesidad de colocar un env en vercel.json
 
-//creamos un nuevo modelo
+app.use('/api/meals',meals)
+app.use('/api/orders',orders)
 
-const Users = mongoose.model('User', new mongoose.Schema({ nombre: String}))
-
-// Ruta para crear un nuevo usuario
-app.get('/api', async (req, res) => {
-    try {
-      const user = await Users.create({ nombre: 'Chanchito Final' });
-      console.log('User created:', user);
-      const users = await Users.find();
-      res.send(users);
-    //   res.send({ message: 'User created successfully' });
-    } catch (error) {
-      console.error('Error creating user:', error);
-      res.status(500).send({ error: 'Internal Server Error' });
-    }
-  });
+// app.get('*',(req,res) => {
+//     res.send('hola mundo')
+// })
 
 module.exports = app

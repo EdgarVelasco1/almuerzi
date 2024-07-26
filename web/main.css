@@ -1,0 +1,38 @@
+body{
+    background-color: #eee;
+    display: flex;
+}
+
+body div{
+    flex-grow: 1;
+    background-color: #fff;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+#meals{
+    margin-left: 0px;
+}
+
+#orders{
+    margin-right: 0px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+#submit{
+    background-color: #6e3dd8;
+    color: #fff;
+    padding: 10px 15px;
+    border: solid 0px;
+    border-radius: 20px;
+    margin: 15px;
+    margin-left: 38px;
+}
+
+#submit:hover{
+    background-color: #5a1c9d;
+    cursor: pointer;
+}
